@@ -37,7 +37,7 @@ function StudentList({ refreshKey }) {
     }
   };
 
-  // ✅ Update student (FIXED)
+  // Update student
   const handleUpdate = async (id, updatedData) => {
     try {
       await API.put(`/students/${id}`, updatedData);
@@ -52,44 +52,57 @@ function StudentList({ refreshKey }) {
 
   return (
     <>
-      <table border="1" cellPadding="8">
+      <table>
         <thead>
           <tr>
             <th>Name</th>
             <th>Email</th>
             <th>Age</th>
             <th>Course</th>
+            <th>College</th> 
             <th>Created</th>
             <th>Actions</th>
           </tr>
         </thead>
 
         <tbody>
-          {students.map((student) => (
-            <tr key={student._id}>
-              <td>{student.name}</td>
-              <td>{student.email}</td>
-              <td>{student.age}</td>
-              <td>{student.course}</td>
-              <td>
-                {student.createdAt
-                  ? new Date(student.createdAt).toLocaleDateString()
-                  : "-"}
-              </td>
-              <td>
-                <button onClick={() => setSelectedStudent(student)}>
-                  Edit
-                </button>
-
-                <button
-                  onClick={() => handleDelete(student._id)}
-                  style={{ marginLeft: "8px" }}
-                >
-                  Delete
-                </button>
+          {students.length === 0 ? (
+            <tr>
+              <td colSpan="7" style={{ textAlign: "center" }}>
+                No students found
               </td>
             </tr>
-          ))}
+          ) : (
+            students.map((student) => (
+              <tr key={student._id}>
+                <td>{student.name}</td>
+                <td>{student.email}</td>
+                <td>{student.age}</td>
+                <td>{student.course}</td>
+                <td>{student.collegeName}</td> {/* ✅ Added */}
+                <td>
+                  {student.createdAt
+                    ? new Date(student.createdAt).toLocaleDateString()
+                    : "-"}
+                </td>
+                <td>
+                  <button
+                    className="edit-btn"
+                    onClick={() => setSelectedStudent(student)}
+                  >
+                    Edit
+                  </button>
+
+                  <button
+                    className="delete-btn"
+                    onClick={() => handleDelete(student._id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))
+          )}
         </tbody>
       </table>
 

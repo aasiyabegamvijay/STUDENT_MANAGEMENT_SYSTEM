@@ -6,6 +6,7 @@ const EditModal = ({ student, onClose, onUpdate }) => {
     email: "",
     age: "",
     course: "",
+    collegeName: ""
   });
 
   useEffect(() => {
@@ -15,6 +16,7 @@ const EditModal = ({ student, onClose, onUpdate }) => {
         email: student.email || "",
         age: student.age || "",
         course: student.course || "",
+        collegeName: student.collegeName || ""
       });
     }
   }, [student]);
@@ -34,27 +36,8 @@ const EditModal = ({ student, onClose, onUpdate }) => {
   if (!student) return null;
 
   return (
-    <div
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        backgroundColor: "rgba(0,0,0,0.5)",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <div
-        style={{
-          backgroundColor: "#fff",
-          padding: "20px",
-          borderRadius: "8px",
-          minWidth: "300px",
-        }}
-      >
+    <div className="modal-overlay">
+      <div className="modal-content">
         <h2>Edit Student</h2>
 
         <form onSubmit={handleSubmit}>
@@ -99,11 +82,25 @@ const EditModal = ({ student, onClose, onUpdate }) => {
             />
           </div>
 
-          <div style={{ marginTop: "10px" }}>
-            <button type="submit">Update</button>
+          {/* ✅ Added College Name Field */}
+          <div>
+            <input
+              name="collegeName"
+              value={formData.collegeName}
+              onChange={handleChange}
+              placeholder="College Name"
+              required
+            />
+          </div>
+
+          <div style={{ marginTop: "15px" }}>
+            <button type="submit" className="edit-btn">
+              Update
+            </button>
             <button
               type="button"
               onClick={onClose}
+              className="cancel-btn"
               style={{ marginLeft: "10px" }}
             >
               Cancel

@@ -4,14 +4,16 @@ const mongoose = require("mongoose");
 // Create Student
 exports.createStudent = async (req, res) => {
   try {
-    const { name, email, age, course } = req.body;
+const { name, email, age, course, collegeName } = req.body;
 
     const student = new Student({
-      name,
-      email,
-      age,
-      course,
-    });
+  name,
+  email,
+  age,
+  course,
+  collegeName  
+});
+
 
     const savedStudent = await student.save();
     res.status(201).json(savedStudent);

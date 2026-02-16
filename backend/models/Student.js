@@ -22,7 +22,12 @@ const studentSchema = new mongoose.Schema(
     course: {
       type: String,
       required: [true, "Course is required"]
-    }
+    },
+    collegeName: {
+      type: String,
+      required: true
+}
+
   },
   { timestamps: true }
 );
