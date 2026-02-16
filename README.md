@@ -35,7 +35,7 @@ The application demonstrates **backend fundamentals, frontend integration, API h
 ## Functional Requirements
 
 ### 1) Add Student
-- **Frontend:** Form with fields: Name, Email, Age, Course  
+- **Frontend:** Form with fields: Name, Email, Age, Course, College Name 
   Client-side validation included.
 - **Backend:** POST `/api/students`  
   **Validation Rules:**
@@ -46,7 +46,7 @@ The application demonstrates **backend fundamentals, frontend integration, API h
 
 ### 2) View Students
 - Display all students in a table.
-- Show Name, Email, Age, Course, Created Date.
+- Show Name, Email, Age, Course, College Name Created Date.
 - Include **Edit** & **Delete** buttons.
 
 ### 3) Get Student by ID
