@@ -4,14 +4,15 @@ const mongoose = require("mongoose");
 // Create Student
 exports.createStudent = async (req, res) => {
   try {
-const { name, email, age, course, collegeName } = req.body;
+const { name, email, age, course, collegeName ,location } = req.body;
 
     const student = new Student({
   name,
   email,
   age,
   course,
-  collegeName  
+  collegeName,
+  location  
 });
 
 

@@ -7,7 +7,8 @@ function StudentForm({ refresh }) {
     email: "",
     age: "",
     course: "",
-    collegeName: ""
+    collegeName: "",
+    location: ""
   });
 
   const [errors, setErrors] = useState({});
@@ -25,6 +26,8 @@ function StudentForm({ refresh }) {
       newErrors.course = "Course required";
     if (!form.collegeName.trim())
       newErrors.collegeName = "College name is required";
+     if (!form.location.trim())
+      newErrors.location = "Location is required";
 
     return newErrors;
   };
@@ -125,6 +128,21 @@ function StudentForm({ refresh }) {
         {errors.collegeName && (
           <div className="error-message">
             {errors.collegeName}
+          </div>
+        )}
+      </div>
+
+      <div>
+        <input
+          placeholder="Location"
+          value={form.location}
+          onChange={(e) =>
+            setForm({ ...form, location: e.target.value })
+          }
+        />
+        {errors.location && (
+          <div className="error-message">
+            {errors.location}
           </div>
         )}
       </div>

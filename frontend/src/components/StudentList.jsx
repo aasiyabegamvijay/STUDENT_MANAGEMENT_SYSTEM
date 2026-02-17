@@ -60,6 +60,7 @@ function StudentList({ refreshKey }) {
             <th>Age</th>
             <th>Course</th>
             <th>College</th> 
+            <th>location</th>
             <th>Created</th>
             <th>Actions</th>
           </tr>
@@ -79,7 +80,8 @@ function StudentList({ refreshKey }) {
                 <td>{student.email}</td>
                 <td>{student.age}</td>
                 <td>{student.course}</td>
-                <td>{student.collegeName}</td> {/* ✅ Added */}
+                <td>{student.collegeName}</td>
+                <td>{student.location}</td>
                 <td>
                   {student.createdAt
                     ? new Date(student.createdAt).toLocaleDateString()

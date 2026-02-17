@@ -26,7 +26,11 @@ const studentSchema = new mongoose.Schema(
     collegeName: {
       type: String,
       required: true
-}
+},
+    location: {
+      type: String,
+      required: [true, "Location is required"]
+    }
 
   },
   { timestamps: true }
